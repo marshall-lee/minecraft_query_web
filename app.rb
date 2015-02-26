@@ -8,6 +8,12 @@ require_relative 'stat_listener'
 configure do
   set :server, :thin
   disable :protection
+
+  if production?
+    set :faye_url, 'http://mc.lemonspace.me/query/faye'
+  else
+    set :faye_url, 'http://localhost:4000/query/faye'
+  end
 end
 
 helpers do
