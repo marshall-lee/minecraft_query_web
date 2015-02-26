@@ -11,8 +11,10 @@ configure do
 
   if production?
     set :faye_url, 'http://mc.lemonspace.me/query/faye'
+    set :query_host, '127.0.0.1'
   else
     set :faye_url, 'http://localhost:4000/query/faye'
+    set :query_host, 'mc.lemonspace.me'
   end
 end
 
