@@ -5,7 +5,9 @@ require 'multi_json'
 
 require_relative 'stat_listener'
 
-set :server, :thin
+configure do
+  set :server, :thin
+end
 
 helpers do
   def listener
