@@ -2,6 +2,8 @@ require 'singleton'
 require 'eventmachine'
 require 'minecraft_query/em/monitor'
 
+require_relative 'global_faye_client'
+
 class StatListener < MinecraftQuery::EM::Monitor
   include Singleton
 
@@ -18,5 +20,15 @@ class StatListener < MinecraftQuery::EM::Monitor
 
   def full_stat
     client.last_full_stat
+  end
+
+  def on_success(result)
+    super
+    case result
+    when MinecraftQuery::Protocol::BasicStatResponse
+      GlobalFayeClient.instance.publish '/basic_stat', result.to_hash
+    when MinecraftQuery::Protocol::FullStatResponse
+      GlobalFayeClient.instance.publish '/full_stat', result.to_hash
+    end
   end
 end
