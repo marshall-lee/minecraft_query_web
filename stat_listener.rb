@@ -6,10 +6,10 @@ class StatListener < MinecraftQuery::EM::Monitor
   include Singleton
 
   def initialize
-    host = if Sinatra::Application.development?
-             'mc.lemonspace.me'
-           else
+    host = if Sinatra::Application.production?
              '127.0.0.1'
+           else
+             'mc.lemonspace.me'
            end
     client = MinecraftQuery::EM::Client.new host, timeout: 1
     super client
