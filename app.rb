@@ -13,6 +13,12 @@ helpers do
   end
 end
 
+before do
+  if listener.last_time
+    last_modified listener.last_time
+  end
+end
+
 get '/query/full_stat.json' do
   content_type :json
   if listener.full_stat
