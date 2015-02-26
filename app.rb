@@ -7,6 +7,7 @@ require_relative 'stat_listener'
 
 configure do
   set :server, :thin
+  disable :protection
 end
 
 helpers do
