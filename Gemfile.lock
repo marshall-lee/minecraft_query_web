@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/marshall-lee/minecraft_query.git
-  revision: e7a820ce5ec33e19633138536dc8a20253ce6cbd
+  revision: eab8a56eb25703c8e02bb8c335cc7745510a2c9c
   specs:
     minecraft_query (0.1.0)
 
